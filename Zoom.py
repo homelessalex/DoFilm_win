@@ -4,8 +4,8 @@ from scipy import ndimage
 from colour import io
 from numba import njit, prange
 from colour import gamma_function
-import sys
-sys.frozen = True
+#import sys
+#sys.frozen = True
 
 from PIL import Image
 
