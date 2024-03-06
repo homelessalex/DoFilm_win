@@ -1,6 +1,6 @@
 import os
 import pathlib
-#os.system ("winget install --id Git.Git -e --source winget")
+os.system ("winget install --id Git.Git -e --source winget")
 
 os.system(  "cd " + os.path.dirname(os.path.abspath(__file__))+" & "+
             "git clone https://github.com/homelessalex/DoFilm_win.git"+" & "+
