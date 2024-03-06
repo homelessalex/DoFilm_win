@@ -1,3 +1,4 @@
+
 import numpy as np
 import pickle
 import copy
@@ -76,7 +77,7 @@ blur_rad = 1.0
 blur_spred = 9.0
 halation = 1.7
 bloom_rad = 140
-bloom_spred = 21.0
+bloom_spred = 22.0
 bloom_Halation = 1.0
 sharp_rad = 40.0
 sharp_spred = 15.0

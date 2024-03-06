@@ -1,7 +1,8 @@
-from PIL import Image
+import os
+os.environ['OPENBLAS_NUM_THREADS'] = '1'
+os.environ['MKL_NUM_THREADS'] = '1'
 import numpy as np
-from colour import io
-import pickle
+
 import cash
 import time
 import slising
@@ -340,7 +341,7 @@ def magic(resolution,uploaded_file,wight_balance, blur_rad, halation, blur_spred
 
                 img_blured/=(np.average(img_blured)*2)
                 #img_blured*=(5**((2+gamma+print_exp)/3))
-                img_blured*=(5**((2+gamma)/3))
+                img_blured*=(5**((3+gamma)/3))
                 
                 img_blured+=1#(np.log(gamma+2.7)-1)
 
@@ -348,8 +349,8 @@ def magic(resolution,uploaded_file,wight_balance, blur_rad, halation, blur_spred
 
 
 
-                if np.max(img_blured)>=1:
-                    img_blured/=np.max(img_blured) 
+                if np.max(img_blured)>=0.9:
+                    img_blured/=(np.max(img_blured)/0.9)
 
                 #img_blured-=np.min(img_blured)         
                 img_blured=np.nan_to_num(img_blured)

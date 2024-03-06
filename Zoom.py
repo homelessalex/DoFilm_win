@@ -1,3 +1,6 @@
+import os
+os.environ['OPENBLAS_NUM_THREADS'] = '1'
+os.environ['MKL_NUM_THREADS'] = '1'
 import numpy as np
 import rawpy
 from scipy import ndimage
@@ -79,7 +82,7 @@ def zoom(q_in_zoom,q_out_zoom):
                 zoom_chank[i] = gamma_function(zoom_chank[i],0.4) #gamma 2.5
                 zoom_chank[i] = np.nan_to_num(zoom_chank[i])
 
-                zoom_chank[i]=zoom_chank[i]+(grain_0/30)
+                zoom_chank[i]=zoom_chank[i]+(grain_0/40)
 
 
                 zoom_chank[i][zoom_chank[i]<0]=0
@@ -115,7 +118,7 @@ def raw(raw_in,WB,is_half) -> np.array:
             rgb = raw.postprocess(output_color=rawpy.ColorSpace(0),  demosaic_algorithm=rawpy.DemosaicAlgorithm(3), half_size=False,
                                 use_camera_wb=cam, use_auto_wb=auto, highlight_mode=rawpy.HighlightMode(0),#user_wb=(1,1,1,1),
                                 output_bps=16,  no_auto_scale=False, no_auto_bright=False,auto_bright_thr=0.000000001,
-                                gamma=(2.2,4.5), chromatic_aberration=(1,1),)
+                                gamma=(1.0,4.5), chromatic_aberration=(1,1),)
     rgb=np.dstack((rgb[:,:,0],rgb[:,:,1],rgb[:,:,2]))
     rgb = io.convert_bit_depth(rgb,"float32")
     return rgb

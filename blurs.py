@@ -1,3 +1,6 @@
+import os
+os.environ['OPENBLAS_NUM_THREADS'] = '1'
+os.environ['MKL_NUM_THREADS'] = '1'
 import numpy as np
 from scipy import signal
 from colour import gamma_function
